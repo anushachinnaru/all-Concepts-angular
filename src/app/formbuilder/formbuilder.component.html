@@ -1,0 +1,32 @@
+<p>formbuilder works!</p>
+<form [formGroup]="userform" (ngSubmit)="onSubmit()">
+  <label for="fname">First name:</label><br />
+  <input type="text" id="fname" name="name" formControlName="name" /><br />
+  <p *ngIf="!userform.controls['name'].valid">please enter first name</p>
+  <label for="skills">Skills:</label><br />
+  <div formArrayName="skills">
+    <div *ngFor="let skill of getSkills.controls; let i = index">
+      <div *ngIf="getSkills.length"></div>
+      <input type="text" [formControlName]="i" />
+    </div>
+  </div>
+  <div formArrayName="hobbies">
+    <div *ngFor="let hibiee of getHobbies.controls; let i = index">
+      <div *ngIf="getSkills.length"></div>
+      <div [formGroupName]="i">
+        nameofthehobbie: <input type="text" formControlName="nameofthehobbie" />
+        <p *ngIf="!hibiee.get('nameofthehobbie')?.valid && hibiee.get('nameofthehobbie')?.touched">
+          Please enter nameofthe hobbie
+        </p>
+        timePreferred :<input type="text" formControlName="timePreferred" />
+        <p *ngIf="!hibiee.get('timePreferred')?.valid && hibiee.get('timePreferred')?.touched">
+          Please enter time preferred
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+<button (click)="addSkills()">Add Skills</button>
+<button (click)="addHobbies()">Add Hobbies</button>

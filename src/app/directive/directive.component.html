@@ -1,0 +1,52 @@
+<p>directive works!</p>
+<!-- ngfor,ngIf and ngStyle -->
+<ng-container *ngIf="movies?.length">
+  <p
+    *ngFor="
+      let movie of movies;
+      let i = index;
+      let count = count;
+      let first = first;
+      let last = last;
+      let odd = odd;
+      trackBy: trackByFn
+    "
+    [ngStyle]="{ color: odd ? 'green' : 'red' }"
+  >
+    {{ i }} {{ movie.title }}
+    {{ movie.releaseDate }}
+    {{ movie.director }}
+    {{ count }}
+    {{ first }}
+    {{ last }}
+    {{ odd }}
+  </p>
+</ng-container>
+
+<!-- ng switch case -->
+
+Number:<input type="number" [(ngModel)]="valueEntered" />
+
+<div [ngSwitch]="valueEntered">
+  <div *ngSwitchCase="1">output1</div>
+  <div *ngSwitchCase="2">output2</div>
+  <div *ngSwitchDefault>output default</div>
+</div>
+
+<!-- Track By in ngFor -->
+
+<form #userForm="ngForm">
+  Cast:<input type="text" ngModel name="cast" /> Title:<input type="text" ngModel name="title" /> Director:<input
+    type="text"
+    ngModel
+    name="director"
+  />
+  ReleaseDate:<input type="text" ngModel name="releasedate" />
+</form>
+<button type="submit" (click)="addMovie(userForm)">Submit</button>
+
+<p *ngFor="let item of movies; trackBy: trackByFn">{{ item.title }}</p>
+
+<!-- applying custom attribute directive example -->
+
+<p appCustomDirective>this is p tag , applying custom directive on it</p>

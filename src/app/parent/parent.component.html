@@ -1,0 +1,9 @@
+<p>parent works!</p>
+<!-- using ngmodel directive for two-way communication -->
+<input type="text" [(ngModel)]="userName" />
+<input type="text" [(ngModel)]="intial" (input)="onClick()" />
+<!-- input property binding parent to child communication -->
+<app-child [userName]="userName" [userObj]="details"></app-child>
+<!-- output event binding for child to parent communication -->
+<button>change val</button>
+{{ details.name }}

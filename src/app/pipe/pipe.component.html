@@ -1,0 +1,16 @@
+<p>pipe works!</p>
+<!-- using date pipe i.e pure pipe -->
+<h1>{{ this.date | date }}</h1>
+<!-- chaining multiple pipes -->
+<p>{{ this.username | uppercase | lowercase | titlecase | slice: 3:5 }}</p>
+<!-- as we using impure pipe for every change detetion pipe will execute  -->
+<button (click)="onAddUser()">Add User</button>
+<input type="text" [(ngModel)]="serachVal" />
+<!-- example of cutom pipe i.e impure pipe usage  -->
+<p *ngFor="let emp of employees | filter: serachVal">{{ emp.firstName }} - {{ emp.lastName }}</p>
+<!-- slice pipe -->
+<p>{{ numbersArr | slice: 2 }}</p>
+<!-- percentage pipe -->
+<p>Unformatted :{{ per }}</p>
+<p>Example 1 :{{ per | percent }}</p>
+<p>Example 2 :{{ per | percent: '1.2-2' }}</p>

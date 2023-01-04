@@ -1,0 +1,20 @@
+<p>template-driven works!</p>
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+  <label for="fname">First name:</label><br />
+  <input type="text" id="fname" name="fname" ngModel /><br />
+  <label for="lname">Last name:</label><br />
+  <input type="text" id="lname" name="lname" ngModel /><br />
+  <label for="email">Email:</label><br />
+  <input type="text" id="email" name="email" ngModel /><br /><br />
+  <div ngModelGroup="address">
+    <label for="city">City:</label>
+    <input type="text" name="city" id="city" ngModel /><br />
+    <label for="pincode">Pincode:</label>
+    <input type="number" name="pincode" id="pincode" ngModel />
+  </div>
+  <button type="submit">Submit</button>
+</form>
+<button (click)="onIntialize()">Intialize Values</button> <br />
+<button (click)="onReset()">Reset Single</button> <br />
+<button (click)="onResetForm()">Reset Form</button> <br />
+<button (click)="onPatchVals()">Patch Value</button> <br />
